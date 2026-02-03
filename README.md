@@ -1,13 +1,23 @@
 # AgriHelp - Agricultural AI Assistant
----
-<br>
+
 <div align="center">
-   <img src="images/backhome.png" width="900">
+   <img src="docs/images/backhome.png" width="900">
 </div>
 
 <br>
-<br>
+
 An intelligent agricultural assistant that helps farmers diagnose crop diseases, get farming advice, and receive treatment recommendations in multiple languages (Darija, Arabic, French).
+
+## 📁 Project Structure
+
+```
+agrihelp_app/
+├── frontend/              # React/TypeScript web application
+├── backend/               # Backend API (to be implemented)
+├── docs/                  # Documentation and assets
+│   └── images/           # Project images
+└── README.md             # This file
+```
 
 ## ✨ Features
 
@@ -25,120 +35,76 @@ An intelligent agricultural assistant that helps farmers diagnose crop diseases,
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Node.js 18+
-- npm or yarn
-
-### Installation
+### Frontend
 
 ```bash
-# Clone and install
-git clone <YOUR_GIT_URL>
-cd agrihelp-app
+cd frontend
 npm install
-
-# Configure environment
-cp .env.example .env
-# Edit .env with your API keys
-
-# Start development server
 npm run dev
 ```
 
 Visit `http://localhost:5173`
 
-### Environment Variables
+For detailed frontend documentation, see [frontend/README.md](frontend/README.md)
 
-```env
-VITE_API_BASE_URL=http://localhost:3000
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_key
-```
+### Backend
 
-## 📁 Project Structure
-
-```
-src/
-├── api/                    # API configuration and endpoints
-├── services/              # Backend integrations (LLM, image analysis)
-├── pages/                 # Route components
-│   ├── auth/             # Authentication pages
-│   └── Index.tsx         # Main chat interface
-├── components/           # Reusable UI components
-├── hooks/                # Custom React hooks
-└── types/                # TypeScript definitions
-```
-
-## 🔌 Backend Integration
-
-### Required API Endpoints
-
-**Chat & LLM**
-```typescript
-POST /api/llm/chat      // Send message to AI
-POST /api/llm/stream    // Stream AI responses
-```
-
-**Image Analysis**
-```typescript
-POST /api/image/upload           // Upload image
-POST /api/image/analyze          // Analyze for diseases
-POST /api/image/analyze-base64   // Analyze base64 image
-```
-
-**Authentication**
-```typescript
-POST /api/auth/signin    // User login
-POST /api/auth/signup    // User registration
-POST /api/auth/signout   // User logout
-POST /api/auth/refresh   // Refresh token
-```
-
-### Usage Examples
-
-**Send a chat message:**
-```typescript
-import { sendMessageToLLM } from '@/services';
-
-const response = await sendMessageToLLM({
-  message: 'What is wrong with my tomato plant?',
-  language: 'darija',
-  imageUrl: 'https://...',
-});
-```
-
-**Analyze an image:**
-```typescript
-import { uploadAndAnalyzeImage } from '@/services';
-
-const result = await uploadAndAnalyzeImage(file, 'arabic');
-console.log(result.detections);  // Detected diseases
-console.log(result.treatment);   // Treatment plan
-```
-
-For detailed integration guides, see [`src/services/README.md`](src/services/README.md) and [`src/api/README.md`](src/api/README.md).
+The backend is not yet implemented. See [backend/README.md](backend/README.md) for:
+- Required API endpoints
+- Technology stack recommendations
+- Integration guide with frontend
 
 ## 🛠️ Tech Stack
 
-| Category | Technology |
-|----------|-----------|
-| Framework | React 18 + TypeScript |
-| Build Tool | Vite |
-| Styling | Tailwind CSS |
-| UI Components | shadcn/ui |
-| Routing | React Router v6 |
-| State Management | TanStack Query |
-| Form Validation | React Hook Form + Zod |
-| Backend | Supabase (optional) |
+### Frontend
+- **Framework**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Routing**: React Router v6
+- **State Management**: TanStack Query
 
-## 📱 Routes
+### Backend (Planned)
+- Choose from: Node.js/Express, Python/FastAPI, or Java/Spring Boot
+- Database: PostgreSQL or MongoDB
+- AI/LLM: OpenAI GPT or Google Gemini
+- Authentication: JWT or OAuth
 
-| Path | Page | Description |
-|------|------|-------------|
+## 📱 Application Routes
+
+| Route | Page | Description |
+|-------|------|-------------|
 | `/` | Landing | Homepage with features |
 | `/signin` | Sign In | User authentication |
 | `/signup` | Sign Up | User registration |
 | `/chat` | Chat | AI assistant interface |
+
+## 🔌 Backend Integration
+
+The frontend is ready to integrate with a backend API. Required endpoints:
+
+**Chat & LLM**
+```
+POST /api/llm/chat      # Send message to AI
+POST /api/llm/stream    # Stream AI responses
+```
+
+**Image Analysis**
+```
+POST /api/image/upload           # Upload image
+POST /api/image/analyze          # Analyze for diseases
+POST /api/image/analyze-base64   # Analyze base64 image
+```
+
+**Authentication**
+```
+POST /api/auth/signin    # User login
+POST /api/auth/signup    # User registration
+POST /api/auth/signout   # User logout
+POST /api/auth/refresh   # Refresh token
+```
+
+See [backend/README.md](backend/README.md) for implementation details.
 
 ## 🌍 Multi-Language Support
 
@@ -165,26 +131,17 @@ Language affects UI text, AI responses, and treatment recommendations.
 - Responsive scales: `text-base sm:text-lg md:text-xl`
 - Mobile-first CSS utilities
 
-## 📦 Scripts
-
-```bash
-npm run dev          # Start development server
-npm run build        # Production build
-npm run lint         # Run ESLint
-npm run preview      # Preview production build
-```
-
 ## 🚢 Deployment
 
+### Frontend
 ```bash
-# Build for production
+cd frontend
 npm run build
-
-# Deploy to Vercel/Netlify
-# 1. Connect your Git repository
-# 2. Set environment variables
-# 3. Deploy automatically on push
+# Deploy dist/ folder to Vercel/Netlify
 ```
+
+### Backend
+See [backend/README.md](backend/README.md) for deployment instructions once implemented.
 
 ## 📋 Development Guidelines
 
@@ -202,20 +159,23 @@ npm run build
 
 ## 🎯 Roadmap
 
-**Phase 1 - Backend Integration**
+**Phase 1 - Backend Implementation**
+- [ ] Choose and set up backend framework
+- [ ] Implement authentication system
 - [ ] Connect LLM API (OpenAI/Gemini)
 - [ ] Integrate image analysis service
-- [ ] Implement real authentication
 
 **Phase 2 - Enhanced Features**
 - [ ] Conversation history persistence
 - [ ] Offline support & PWA
 - [ ] Push notifications
+- [ ] Real-time chat updates
 
 **Phase 3 - Scale & Analytics**
 - [ ] Admin dashboard
 - [ ] Analytics and monitoring
 - [ ] Multi-region support
+- [ ] Performance optimization
 
 ## 🤝 Contributing
 
@@ -231,9 +191,10 @@ MIT License - see LICENSE file for details
 
 ## 🆘 Support
 
-- 📖 Documentation: Check `src/services/README.md` and `src/api/README.md`
-- 🐛 Issues: Open an issue on GitHub
-- 💬 Questions: Contact the development team
+- 📖 **Frontend Documentation**: [frontend/README.md](frontend/README.md)
+- 🔧 **Backend Documentation**: [backend/README.md](backend/README.md)
+- 🐛 **Issues**: Open an issue on GitHub
+- 💬 **Questions**: Contact the development team
 
 ---
 

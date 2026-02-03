@@ -65,7 +65,7 @@ agrihelp-app/
 1. **Clone the repository**
    ```bash
    git clone <YOUR_GIT_URL>
-   cd agrihelp-app
+   cd agrihelp_app/frontend
    ```
 
 2. **Install dependencies**
