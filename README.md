@@ -1,8 +1,5 @@
 # AgriHelp - Agricultural AI Assistant
 
-<div align="center">
-   <img src="docs/images/backhome.png" width="900">
-</div>
 
 <br>
 
